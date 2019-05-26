@@ -17,11 +17,11 @@ public class MixinClientPlayerEntity {
 
     @Inject(method = "move", at = @At("HEAD"))
     private void preMove(CallbackInfo callbackInfo) {
-        Fabrix.INSTANCE.EVENT_BUS.post(new MoveEvent(MoveEvent.State.PRE));
+        Fabrix.INSTANCE.getEventBus().post(new MoveEvent(MoveEvent.State.PRE));
     }
 
     @Inject(method = "move", at = @At("RETURN"))
     private void postMove(CallbackInfo callbackInfo) {
-        Fabrix.INSTANCE.EVENT_BUS.post(new MoveEvent(MoveEvent.State.POST));
+        Fabrix.INSTANCE.getEventBus().post(new MoveEvent(MoveEvent.State.POST));
     }
 }

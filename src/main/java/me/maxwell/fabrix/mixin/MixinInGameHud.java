@@ -17,6 +17,6 @@ public class MixinInGameHud {
 
     @Inject(method = "draw", at = @At("RETURN"))
     private void draw(CallbackInfo callbackInfo) {
-        Fabrix.INSTANCE.EVENT_BUS.post(new RenderEvent());
+        Fabrix.INSTANCE.getEventBus().post(new RenderEvent());
     }
 }
