@@ -2,6 +2,7 @@ package me.maxwell.fabrix.mixin;
 
 import me.maxwell.fabrix.Fabrix;
 import me.maxwell.fabrix.event.MoveEvent;
+import me.maxwell.fabrix.event.SendChatEvent;
 import net.minecraft.client.network.ClientPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,5 +24,10 @@ public class MixinClientPlayerEntity {
     @Inject(method = "move", at = @At("RETURN"))
     private void postMove(CallbackInfo callbackInfo) {
         Fabrix.INSTANCE.getEventBus().post(new MoveEvent(MoveEvent.State.POST));
+    }
+
+    @Inject(method = "sendChatMessage", at = @At("HEAD"))
+    private void sendChatMessage(String message, CallbackInfo callbackInfo) {
+        Fabrix.INSTANCE.getEventBus().post(new SendChatEvent(message));
     }
 }
