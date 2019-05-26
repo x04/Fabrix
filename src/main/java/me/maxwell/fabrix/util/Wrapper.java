@@ -28,9 +28,15 @@ public enum Wrapper {
         return getMinecraft().world;
     }
 
-    public FontManager getFontManager() { return getMinecraft().getFontManager(); }
+    public FontManager getFontManager() {
+        return getMinecraft().getFontManager();
+    }
 
-    public TextRenderer getTextRenderer(Identifier identifier) { return getFontManager().getTextRenderer(identifier); }
+    public TextRenderer getTextRenderer(Identifier identifier) {
+        return getFontManager().getTextRenderer(identifier);
+    }
 
-    public TextRenderer getDefaultTextRenderer() { return getTextRenderer(MinecraftClient.DEFAULT_TEXT_RENDERER_ID); }
+    public TextRenderer getDefaultTextRenderer() {
+        return getTextRenderer(MinecraftClient.DEFAULT_TEXT_RENDERER_ID);
+    }
 }
