@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
+  "id": "fabrix",
+  "version": "0.1-SNAPSHOT",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Fabrix",
+  "description": "A Minecraft: Java Edition cheat that runs as a Fabric mod.",
   "authors": [
-    "Me!"
+    "Maxwell"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "",
+    "sources": "https://github.com/ikeaaa/Fabrix"
   },
 
   "license": "CC0-1.0",
@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "me.maxwell.fabrix.FabrixLoader"
     ]
   },
   "mixins": [

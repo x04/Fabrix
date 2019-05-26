@@ -1,11 +1,12 @@
 {
   "required": true,
-  "package": "net.fabricmc.example.mixin",
+  "package": "me.maxwell.fabrix.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "MixinClientPlayerEntity",
+    "MixinInGameHud"
   ],
   "injectors": {
     "defaultRequire": 1
