@@ -2,7 +2,7 @@ package me.maxwell.fabrix;
 
 import lombok.Getter;
 import me.maxwell.fabrix.manager.ModManager;
-import me.maxwell.fabrix.mod.impl.OverlayMod;
+import me.maxwell.fabrix.mod.ModType;
 import me.zero.alpine.bus.EventBus;
 import me.zero.alpine.bus.EventManager;
 
@@ -20,7 +20,9 @@ public enum Fabrix {
     public final ModManager modManager = new ModManager();
 
     public void start() {
-        /** Startup the overlay. */
-        getModManager().getMod(OverlayMod.class).onEnable();
+        /** Startup all core mods. */
+        Fabrix.INSTANCE.getModManager().getMods().stream()
+                .filter(mod -> mod.getType() == ModType.CORE)
+                .forEach(mod -> mod.onEnable());
     }
 }
