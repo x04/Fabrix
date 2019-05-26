@@ -3,6 +3,8 @@ package me.maxwell.fabrix.manager;
 import com.google.common.collect.ClassToInstanceMap;
 import com.google.common.collect.ImmutableClassToInstanceMap;
 import me.maxwell.fabrix.mod.Mod;
+import me.maxwell.fabrix.mod.impl.AutoSprintMod;
+import me.maxwell.fabrix.mod.impl.BrightnessMod;
 import me.maxwell.fabrix.mod.impl.OverlayMod;
 
 import java.util.Collection;
@@ -14,6 +16,12 @@ import java.util.Collections;
  */
 public final class ModManager {
     private final ClassToInstanceMap<Mod> MOD_REGISTRY = new ImmutableClassToInstanceMap.Builder<Mod>()
+            /** Player */
+            .put(AutoSprintMod.class, new AutoSprintMod())
+
+            /** Draw */
+            .put(BrightnessMod.class, new BrightnessMod())
+
             /** Core */
             .put(OverlayMod.class, new OverlayMod())
 

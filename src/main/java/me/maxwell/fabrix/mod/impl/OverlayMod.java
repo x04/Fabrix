@@ -14,7 +14,6 @@ import me.zero.alpine.listener.Listener;
  * @since 5/26/2019 at 1:35 AM
  */
 public class OverlayMod extends Mod implements Listenable {
-    private int y;
 
     public OverlayMod() {
         super("Overlay", ModType.CORE);
