@@ -20,7 +20,7 @@ public class OverlayMod extends Mod implements Listenable {
     }
 
     @EventHandler
-    private Listener<RenderEvent> renderListener = new Listener<>(event -> {
+    private final Listener<RenderEvent> renderListener = new Listener<>(event -> {
         MinecraftClient.getInstance().getFontManager().getTextRenderer(MinecraftClient.DEFAULT_TEXT_RENDERER_ID).drawWithShadow("Fabrix", 4, 4, 0xFFFFFFFF);
     });
 
