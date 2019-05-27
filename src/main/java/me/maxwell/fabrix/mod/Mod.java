@@ -1,7 +1,6 @@
 package me.maxwell.fabrix.mod;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @author lazy
@@ -14,7 +13,6 @@ public abstract class Mod {
      */
     private ModManifest manifest;
 
-    @Setter
     public boolean running;
 
     public Mod() {
@@ -32,6 +30,20 @@ public abstract class Mod {
 
     public ModType getType() {
         return manifest.type();
+    }
+
+    public void setRunning(boolean running) {
+        if (running) {
+            onEnable();
+            this.running = true;
+        } else {
+            onDisable();
+            this.running = false;
+        }
+    }
+
+    public void toggle() {
+        setRunning(!isRunning());
     }
 
     public void onEnable() { }

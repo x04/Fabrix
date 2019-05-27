@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableClassToInstanceMap;
 import me.maxwell.fabrix.mod.Mod;
 import me.maxwell.fabrix.mod.impl.AutoSprintMod;
 import me.maxwell.fabrix.mod.impl.BrightnessMod;
+import me.maxwell.fabrix.mod.impl.CommandsMod;
 import me.maxwell.fabrix.mod.impl.OverlayMod;
 
 import java.util.Collection;
@@ -23,12 +24,17 @@ public final class ModManager {
             .put(BrightnessMod.class, new BrightnessMod())
 
             /** Core */
+            .put(CommandsMod.class, new CommandsMod())
             .put(OverlayMod.class, new OverlayMod())
 
             .build();
 
     public <T extends Mod> T getMod(Class<T> clazz) {
         return MOD_REGISTRY.getInstance(clazz);
+    }
+
+    public Mod getMod(String label) {
+        return getMods().stream().filter(mod -> mod.getName().equalsIgnoreCase(label)).findFirst().orElse(null);
     }
 
     public Collection<Mod> getMods() {

@@ -16,10 +16,23 @@ import me.zero.alpine.listener.Listener;
  */
 @ModManifest(label = "Overlay", type = ModType.CORE)
 public class OverlayMod extends Mod implements Listenable {
+    private final int BASE_OFFSET = 14;
+    private int y;
 
     @EventHandler
     private final Listener<RenderEvent> renderListener = new Listener<>(event -> {
-        Drawing.INSTANCE.drawStringWithShadow("Fabrix", 4, 4, 0xFFFFFFFF);
+        Drawing.INSTANCE.drawStringWithShadow("Fabrix", 4, 4, 0xAAAAAAFF);
+
+        Fabrix.INSTANCE.getModManager().getMods().stream()
+                .filter(Mod::isRunning)
+                .filter(mod -> mod.getType() != ModType.CORE)
+                .forEach(mod -> {
+                    Drawing.INSTANCE.drawStringWithShadow(mod.getName(), 4, y, 0xFFFFFFFF);
+                    y += 10;
+                });
+
+        /** Reset the offset so it can be calculated again. */
+        y = BASE_OFFSET;
     });
 
     @Override

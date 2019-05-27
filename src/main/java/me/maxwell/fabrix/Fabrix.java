@@ -1,6 +1,7 @@
 package me.maxwell.fabrix;
 
 import lombok.Getter;
+import me.maxwell.fabrix.manager.CommandManager;
 import me.maxwell.fabrix.manager.ModManager;
 import me.maxwell.fabrix.mod.ModType;
 import me.zero.alpine.bus.EventBus;
@@ -18,11 +19,12 @@ public enum Fabrix {
 
     public final EventBus eventBus = new EventManager();
     public final ModManager modManager = new ModManager();
+    public final CommandManager commandManager = new CommandManager();
 
     public void start() {
         /** Startup all core mods. */
         Fabrix.INSTANCE.getModManager().getMods().stream()
                 .filter(mod -> mod.getType() == ModType.CORE)
-                .forEach(mod -> mod.onEnable());
+                .forEach(mod -> mod.setRunning(true));
     }
 }

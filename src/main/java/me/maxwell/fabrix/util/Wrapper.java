@@ -4,7 +4,9 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.FontManager;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.options.GameOptions;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.util.Identifier;
 
 /**
@@ -28,6 +30,8 @@ public enum Wrapper {
         return getMinecraft().world;
     }
 
+    public GameOptions getOptions() { return getMinecraft().options; }
+
     public FontManager getFontManager() {
         return getMinecraft().getFontManager();
     }
@@ -38,5 +42,9 @@ public enum Wrapper {
 
     public TextRenderer getDefaultTextRenderer() {
         return getTextRenderer(MinecraftClient.DEFAULT_TEXT_RENDERER_ID);
+    }
+
+    public void sendMessage(String message) {
+        getPlayer().addChatMessage(new TextComponent("\2477[F] \247f" + message), false);
     }
 }

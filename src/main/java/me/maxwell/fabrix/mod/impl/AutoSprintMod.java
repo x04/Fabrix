@@ -19,7 +19,7 @@ public class AutoSprintMod extends Mod implements Listenable {
 
     @EventHandler
     private final Listener<MoveEvent> moveListener = new Listener<>(event -> {
-        if (Wrapper.INSTANCE.getPlayer().forwardSpeed > 1.f)
+        if (Wrapper.INSTANCE.getPlayer().forwardSpeed > 0.f)
             Wrapper.INSTANCE.getPlayer().setSprinting(true);
     });
 
