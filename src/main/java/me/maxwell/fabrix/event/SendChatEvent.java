@@ -1,6 +1,7 @@
 package me.maxwell.fabrix.event;
 
 import lombok.Getter;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * @author lazy
@@ -10,7 +11,11 @@ public class SendChatEvent {
     @Getter
     private String message;
 
-    public SendChatEvent(String message) {
+    @Getter
+    private CallbackInfo callbackInfo;
+
+    public SendChatEvent(String message, CallbackInfo callbackInfo) {
         this.message = message;
+        this.callbackInfo = callbackInfo;
     }
 }

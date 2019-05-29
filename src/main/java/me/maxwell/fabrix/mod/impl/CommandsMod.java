@@ -27,6 +27,9 @@ public class CommandsMod extends Mod implements Listenable {
         if (!event.getMessage().startsWith(COMMAND_PREFIX))
             return;
 
+        // Go ahead and cancel the event, as we are executing a command from it.
+        event.getCallbackInfo().cancel();
+
         // Removes the prefix from the command.
         String message = event.getMessage();
         message = message.substring(1);

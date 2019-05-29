@@ -26,8 +26,8 @@ public class MixinClientPlayerEntity {
         Fabrix.INSTANCE.getEventBus().post(new MoveEvent(MoveEvent.State.POST));
     }
 
-    @Inject(method = "sendChatMessage", at = @At("HEAD"))
+    @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void sendChatMessage(String message, CallbackInfo callbackInfo) {
-        Fabrix.INSTANCE.getEventBus().post(new SendChatEvent(message));
+        Fabrix.INSTANCE.getEventBus().post(new SendChatEvent(message, callbackInfo));
     }
 }
