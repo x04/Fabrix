@@ -3,10 +3,7 @@ package me.maxwell.fabrix.manager;
 import com.google.common.collect.ClassToInstanceMap;
 import com.google.common.collect.ImmutableClassToInstanceMap;
 import me.maxwell.fabrix.mod.Mod;
-import me.maxwell.fabrix.mod.impl.AutoSprintMod;
-import me.maxwell.fabrix.mod.impl.BrightnessMod;
-import me.maxwell.fabrix.mod.impl.CommandsMod;
-import me.maxwell.fabrix.mod.impl.OverlayMod;
+import me.maxwell.fabrix.mod.impl.*;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -22,6 +19,7 @@ public final class ModManager {
 
             /** Draw */
             .put(BrightnessMod.class, new BrightnessMod())
+            .put(EspMod.class, new EspMod())
 
             /** Core */
             .put(CommandsMod.class, new CommandsMod())
